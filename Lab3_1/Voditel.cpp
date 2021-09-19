@@ -31,7 +31,7 @@ void Voditel::new_voditel_info()
 		gets_s(name);
 	}
 	cout << "Введите возраст: ";
-	while (scanf("%lf", &age) != 1)
+	while (scanf("%lf", &age) != 1 || age < 0)
 	{
 		printf("Неверно введен возраст водителя, попробуйте еще: ");
 		while (getchar() != '\n');
@@ -52,7 +52,7 @@ void Voditel::new_voditel_info()
 		gets_s(covid_19);
 	}
 	cout << "Введите стаж водителя: ";
-	while (scanf("%lf", &stag) != 1)
+	while (scanf("%lf", &stag) != 1 || stag < 0)
 	{
 		printf("Неверно введен стаж водителя, попробуйте еще: ");
 		while (getchar() != '\n');
