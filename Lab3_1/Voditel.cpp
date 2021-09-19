@@ -94,3 +94,15 @@ void Voditel::voditel_covid()
 		cout << "Информация о водителе отсутствует";
 	}
 }
+
+int Voditel::voditel_get()
+{
+	if (age >= 0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}

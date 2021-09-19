@@ -9,5 +9,6 @@ public:
 	void new_korobka_peredach(double kolvo_peredach_1, char tip_korobki_1[20]);
 	void prosmotr_korobka_peredach();
 	void korobka_peredach_peredacha_plus();
+	int korobka_get();
 };
 

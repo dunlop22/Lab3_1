@@ -68,3 +68,18 @@ void Korobka::korobka_peredach_peredacha_plus()
 		cout << "Информации о коробках передач отсутствует";
 	}
 }
+
+int Korobka::korobka_get()
+{
+	if (kolvo_peredach >= 0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+
+
+
+}

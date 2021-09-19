@@ -114,3 +114,15 @@ void Motor::motor_force()
 	}
 }
 
+int Motor::motor_get()
+{
+	if (koni >= 0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+
+}

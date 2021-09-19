@@ -12,6 +12,6 @@ public:
     void new_voditel_info();
     void prosmotr_voditel();
     void voditel_covid();
-    
+    int voditel_get();
 };
 

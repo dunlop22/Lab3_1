@@ -11,5 +11,6 @@ public:
 	void prosmotr_koleso();
 	void new_koleso(double shirina_1, double visota_1, double diametr_1, char tip_diska_1[20]);
 	void new_koleso_info();
+	int koleso_get();
 };
 

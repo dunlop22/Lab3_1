@@ -92,3 +92,15 @@ void Koleso::koleso_diamter()
 		cout << "Информация о колесе еще не была добавлена";
 	}
 }
+
+int Koleso::koleso_get()
+{
+	if (diametr >= 0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}

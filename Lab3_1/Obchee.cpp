@@ -123,3 +123,15 @@ void Obchee::obchee_name()
 		_getch();
 	}
 }
+
+int Obchee::obchee_get()
+{
+	if (massa >= 0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
