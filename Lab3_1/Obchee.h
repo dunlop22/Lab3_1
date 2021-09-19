@@ -11,7 +11,7 @@ class Obchee
 public:
     Obchee();
     void new_obchee_info();
-    void new_obchee(double kolvo_mest, double massa, char name[20], double razgon_do_100, char tip_privoda[20], char tip_topliva[20], double obem_benzobaka);
+    void new_obchee(double kolvo_mest_1, double massa_1, char name_1[20], double razgon_do_100_1, char tip_privoda_1[20], char tip_topliva_1[20], double obem_benzobaka_1);
     void prosmotr_obchee();
     void obchee_name();
 };
