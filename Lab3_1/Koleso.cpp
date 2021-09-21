@@ -97,10 +97,15 @@ int Koleso::koleso_get()
 {
 	if (diametr >= 0)
 	{
-		return 1;
+		return diametr;
 	}
 	else
 	{
-		return 0;
+		return -1;
 	}
+}
+
+void Koleso::koleso_set(double diametr_1)
+{
+	diametr = diametr_1;
 }
