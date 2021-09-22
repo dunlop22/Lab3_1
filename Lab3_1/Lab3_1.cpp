@@ -42,13 +42,7 @@ int main()
 	int menu, podmenu, glmenu, n;
 	glmenu = 0;
 	n = -1;
-	Avto* pmas;
-	pmas = new Avto[0];
-	Avto** objPtr = new Avto * [0];
-	Avto* mashina = new Avto[0];
-	Avto* avtos = (Avto*)operator new(sizeof(Avto) * 0);
-	Avto* placementMemory = static_cast<Avto*>(operator new[](100 * sizeof(Avto)));
-	//Avto* mashina = (Avto*)calloc(0, sizeof(Avto));
+	Avto* avtos = new Avto[0];
 	do
 	{
 		podmenu = 0;
@@ -323,122 +317,54 @@ int main()
 		}
 		else if (glmenu == '7')
 		{
-			int i;
+			int i = 0;
 			double temp, hag;
-			do
+			system("cls");
+			cout << "Введите количество автомобилей для создания: ";
+			while (scanf("%d", &n) != 1 || n < 0)
+			{
+				printf("Неверно введено количество, попробуйте еще: ");
+				while (getchar() != '\n');
+			}
+			while (getchar() != '\n');
+
+			cout << "Введите шаг увеличения диаметра колеса: ";
+			while (scanf("%lf", &hag) != 1 || hag < 0)
+			{
+				printf("Неверно введено количество, попробуйте еще: ");
+				while (getchar() != '\n');
+			}
+			while (getchar() != '\n');
+
+			Avto* avtos = new Avto[n];
+			temp = Kolesiki.koleso_get();
+			avtos[0].new_avto(Motorishe, Obchie, Korobas, Kolesiki);
+			if (avtos[0].avto_get() == 1)
+			{
+						
+				Kolesiki.koleso_set(temp + (i + 1) * hag);
+				for (i = 1; i < n; i++)
+				{
+							
+					avtos[i].new_avto(Motorishe, Obchie, Korobas, Kolesiki);
+					Kolesiki.koleso_set(temp + (i + 1) * hag);
+				}
+				Kolesiki.koleso_set(temp);
+				system("cls");
+				for (i = 0; i < n; i++)
+				{
+					cout << "\n\nАВТО №" << i + 1 << "\n";
+					avtos[i].prosmotr_avto();
+				}
+			}
+			else
 			{
 				system("cls");
-				cout << "1) Создание n автомобилей\n2) Просмотр списка авто\n\nESC - выход в меню";
-				podmenu = _getch();
-
-				if (podmenu == '1')
-				{
-					system("cls");
-					cout << "Введите количество автомобилей для создания: ";
-					while (scanf("%d", &n) != 1 || n < 0)
-					{
-						printf("Неверно введено количество, попробуйте еще: ");
-						while (getchar() != '\n');
-					}
-					while (getchar() != '\n');
-
-					cout << "Введите шаг увеличения диаметра колеса: ";
-					while (scanf("%lf", &hag) != 1 || hag < 0)
-					{
-						printf("Неверно введено количество, попробуйте еще: ");
-						while (getchar() != '\n');
-					}
-					while (getchar() != '\n');
-
-
-					
-					pmas = new Avto[n];
-					for (int i = 0; i < n; i++) // Заполнение массива объектов класса cl
-					{
-						pmas[i].new_avto(Motorishe, Obchie, Korobas, Kolesiki);
-					}
-
-
-
-					std::unique_ptr<Avto, void(*)(Avto*)> Avtom(
-						static_cast<Avto*>(::operator new(10 * sizeof(Avto))),
-						[](Avto* b) {::operator delete(b); });
-					new (Avtom.get()) Avto[10];
-
-
-
-					// Выделяется память для объектов класса Foo в количестве count
-					Avto* avtos = (Avto*)operator new(sizeof(Avto) * n);
-
-
-
-					// Создаются элементы массива (объекты) с нужными начальными аргументами
-
-					for (int i = 0; i < n; ++i)
-					{
-						new(&avtos[i]) Avto();
-					}
-
-					avtos[0].new_avto(Motorishe, Obchie, Korobas, Kolesiki);
-					avtos[0].prosmotr_avto();
-
-					//Avto* mashina= new Avto[n];
-
-					//mashina = (Avto*)malloc(n * sizeof(Avto));
-					//Avto* mashina = (Avto*)malloc(n, sizeof(Avto));
-					/*placementMemory[0].new_avto(Motorishe, Obchie, Korobas, Kolesiki);
-					placementMemory[0].prosmotr_avto();
-					/*temp = Kolesiki.koleso_get();
-					for (i = 1; i < n; i++)
-					{
-						mashina[i].new_avto(Motorishe, Obchie, Korobas, Kolesiki);
-						//Kolesiki.koleso_set(temp + i * hag);
-					}
-					/*
-					_getch();
-					if (mashina[0].avto_get() == 1)
-					{
-						temp = Kolesiki.koleso_get();
-						for (i = 1; i < n; i++)
-						{
-							mashina[i].new_avto(Motorishe, Obchie, Korobas, Kolesiki);
-							//Kolesiki.koleso_set(temp + i * hag);
-						}
-						//Kolesiki.koleso_set(temp);
-					}
-					else
-					{
-						system("cls");
-						cout << "Автомобиль не может быть собран из-за отсутствия даных о каком-либо из агрегатов";
-						n = -1;
-					}
-					*/
-					cout << "\n\nНажите любую клавишу для возврата в меню";
-					_getch();
-				}
-				else if (podmenu == '2')
-				{
-					system("cls");
-					if (n >= 0)
-					{
-						for (i = 0; i < n; i++)
-						{
-							cout << "\n\nАВТО №" << i + 1 << "\n";
-							avtos[i].prosmotr_avto();
-							
-						}
-					}
-					else
-					{
-						cout << "Информация об авто не найдена";
-					}
-					cout << "\n\nНажите любую клавишу для возврата в меню";
-					_getch();
-				}
-			} while (podmenu != 27);
+				cout << "Автомобиль не может быть собран из-за отсутствия даных о каком-либо из агрегатов";
+				n = -1;
+			}
+			cout << "\n\nНажите любую клавишу для возврата в меню";
+			_getch();
 		}
 	} while (glmenu != 27);
-
-	
 }
-

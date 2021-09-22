@@ -4,11 +4,6 @@ using namespace std;
 
 Avto::Avto()
 {
-    Avto::har1.Obchee::Obchee();
-    Avto::har2.Motor::Motor();
-    Avto::har3.Koleso::Koleso();
-    Avto::har4.Korobka::Korobka();
-    Avto::vod.Voditel::Voditel();
 }
 
 
